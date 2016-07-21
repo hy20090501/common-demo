@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>顶踩</title>
+    <style>
+    .container {
+        margin: 0 auto;
+        width: 1000px;
+    }
+    
+    .operate {
+        position: relative;
+        height: 50px;
+    }
+    
+    .support {
+        position: relative;
+        float: left;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .support .supportsum {
+        position: absolute;
+        top: 20px;
+        right: -30px;
+        color: red;
+        font-size: 12px;
+    }
+    
+    .support .hand {
+        /* position: absolute;
+        left: 0;
+        top: 0; */
+    }
+    
+    .support-img {
+        display: block;
+        border-radius: 50%;
+        background-color: #f74b4c;
+        cursor: pointer;
+    }
+    
+    .support-img img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .nosupport {
+        position: relative;
+        float: right;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .nosupport .nosupportsum {
+        position: absolute;
+        top: 20px;
+        left: -30px;
+        color: blue;
+        font-size: 12px;
+    }
+    
+    .nosupport-img {
+        display: block;
+        border-radius: 50%;
+        background-color: #326fd3;
+        cursor: pointer;
+    }
+    
+    .nosupport-img img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .line {
+        position: absolute;
+        top: 25px;
+        left: 85px;
+        width: 830px;
+        height: 2px;
+        /*background: gray;*/
+    }
+    
+    .line .redline {
+        position: absolute;
+        left: 0;
+        top: 0;
+        /*width: 400px;*/
+        height: 2px;
+        background: red;
+        display: block;
+    }
+    
+    .line .blueline {
+        position: absolute;
+        right: 0;
+        top: 0;
+        /*width: 430px;*/
+        height: 2px;
+        background: blue;
+        display: block;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="operate" id="operate">
+            <!-- 顶部区域-->
+            <div class="support">
+                <div class="hand">
+                    <span class="support-img" id="support-hand">
+                        <img id="upding" src="uping.png" alt="" style="display: none;">
+                        <img id="up" src="up.png" alt="">
+                    </span>
+                </div>
+                <div class="supportsum">
+                    <span>201</span>
+                </div>
+            </div>
+            <div class="line">
+                <!-- 红线 -->
+                <span class="redline"></span>
+                <!-- 蓝线 -->
+                <span class="blueline"></span>
+            </div>
+            <!-- 踩部区域-->
+            <div class="nosupport">
+                <div class="hand">
+                    <span class="nosupport-img" id="nosupport-hand">
+                        <img class="" src="downing.png" alt="" style="display: none;">
+                        <img class="hide" src="down.png" alt="" >
+                    </span>
+                </div>
+                <div class="nosupportsum">
+                    <span>954</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script>
+    $(function() {
+        var supportNum = 200;
+        var nosupportNum = 300;
+        var clockEngine = null;
+        function setWidth() {
+            width += 10;
+            if(width > 100 || width === 100) {
+                width = 100;
+                clockEngine = null;
+            }
+            $("#flag").css({
+                "width" : width+"%"
+            });
+        }
+        $("#nosupport-hand").click(function() {
+            //clockEngine = setInterval(setWidth, 50);
+            $(".blueline").animate({
+                width: "40%"
+            }, "slow");
+            $(".redline").animate({
+                width: "60%"
+            }, "slow");
+        });
+    });
+    </script>
+</body>
+
+</html>

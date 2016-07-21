@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="modernizr.js"></script>
+    <style>
+	    * {
+	        user-select: none;
+	        cursor: default;
+	    }
+	    
+	    body,
+	    html {
+	        height: 100%;
+	        font-family: helvetica neue, helvetica, arial, sans-serif;
+	        background: gray;
+	    }
+	    
+	    h1,
+	    p {
+	        text-align: center;
+	        position: relative;
+	        z-index: 1;
+	    }
+	    
+	    h1 {
+	        padding: 50px 0;
+	        margin: 0 50px;
+	        font-size: 30px;
+	        line-height: 30px;
+	        font-weight: 200;
+	    }
+	    
+	    p {
+	        font-size: 14px;
+	        font-weight: 200;
+	        margin: 0 50px;
+	        color: #53646e;
+	    }
+	    
+	    p em {
+	        color: #42a6df;
+	    }
+	    
+	    #container {
+	        position: relative;
+	        height: 100%;
+	        width: 100%;
+	        overflow: hidden;
+	    }
+	    
+	    #container button {
+	        padding: 20px;
+	        border: none;
+	        background: transparent;
+	        display: block;
+	        position: relative;
+	        z-index: 3;
+	        margin: 0 auto;
+	    }
+	    
+	    .dot {
+	        height: 2px;
+	        width: 2px;
+	        color: transparent;
+	        border-radius: 100%;
+	        position: absolute;
+	        z-index: 0;
+	        animation: sploosh 7s cubic-bezier(0.165, 0.84, 0.44, 1);
+	        background: transparent;
+	    }
+	    
+	    @keyframes sploosh {
+	        0% {
+	            box-shadow: 0 0 0 0px rgba(66, 166, 223, 0.7);
+	            background: rgba(0, 137, 123, 0.7);
+	        }
+	        100% {
+	            box-shadow: 0 0 0 300px rgba(66, 166, 223, 0);
+	            background: rgba(0, 137, 123, 0);
+	        }
+	    }
+	    #container {
+	    	margin: 0 auto;
+	    	width: 150px;
+	    	height: 40px;
+	    	color: #fff;
+	    	text-align: center;
+	    	line-height: 40px;
+	    	background: #00897b;
+	    	border-radius: 8px;
+	    }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- PRESS ME! -->
+    </div>
+    <script>
+    // $(window).ready(function() {
+    //     setTimeout(function() {
+    //         setTimeout(function() {
+    //             $('#container').append('<div class="dot" style="top:50%;left:50%;"></div>')
+    //         }, 900);
+    //         setTimeout(function() {
+    //             $('#container').append('<div class="dot" style="top:50%;left:50%;"></div>')
+    //         }, 600);
+    //         setTimeout(function() {
+    //             $('#container').append('<div class="dot" style="top:50%;left:50%;"></div>')
+    //         }, 300);
+    //         setTimeout(function() {
+    //             $('#container').append('<div class="dot" style="top:50%;left:50%;"></div>')
+    //         }, 0);
+    //         setTimeout(function() {
+    //             $('#container .dot').remove();
+    //         }, 2900);
+    //     }, 1500);
+    // });
+
+
+    // click animation
+
+    if (Modernizr.touch) {
+        $('#container').on('touchstart', function(e) {
+            var left = e.originalEvent.touches[0].pageX;
+            var top = e.originalEvent.touches[0].pageY;
+
+            $(this).append('<div class="dot" style="top:' + top + 'px;left:' + left + 'px;"></div>')
+            setTimeout(function() {
+                $('#container .dot:first-of-type').remove();
+            }, 3000);
+        });
+        document.body.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        });
+    } else {
+        // $('#container').on('mousedown', function(e) {
+        // 	//当前点击相对父容器的位置
+        // 	// e.pageX: 鼠标点击的位置（相对于浏览器窗口）
+        // 	// $('#container')[0].offsetLeft 父容器位置（相对于浏览器窗口）
+        //     var left = e.pageX - $('#container')[0].offsetLeft;//$(e).position().left;
+        //     var top = e.pageY - $('#container')[0].offsetTop;//$(e).position().top;
+
+        //     $(this).append('<div class="dot" style="top:' + top + 'px;left:' + left + 'px;"></div>')
+        //     setTimeout(function() {
+        //         $('#container .dot:first-of-type').remove();
+        //     }, 3000);
+        // });
+        $('#container').mousedown(function(e){
+        	//当前点击相对父容器的位置
+        	// e.pageX: 鼠标点击的位置（相对于浏览器窗口）
+        	// $('#container')[0].offsetLeft 父容器位置（相对于浏览器窗口）
+            var left = e.pageX - $('#container')[0].offsetLeft;//$(e).position().left;
+            var top = e.pageY - $('#container')[0].offsetTop;//$(e).position().top;
+
+            $(this).append('<div class="dot" style="top:' + top + 'px;left:' + left + 'px;"></div>')
+            setTimeout(function() {
+                $('#container .dot:first-of-type').remove();
+            }, 3000);
+        });
+    }
+    </script>
+</body>
+
+</html>
