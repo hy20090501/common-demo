@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../dist/css/swiper.min.css">
+
+    <!-- Demo styles -->
+    <style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    nav.re_nav {
+        width: 100%;
+        height: 50px;
+        white-space: nowrap;
+	    overflow-x: scroll;
+    }
+    .re_nav .swiper-wrapper {
+        height: 50px;
+    }
+    .re_nav .swiper-slide {
+        width: 70px;
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+
+    .re_nav .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .img-slide .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .img-slide .swiper-container {
+        height: 100px;
+    }
+    .img-slide .swiper-slide img{
+        width: 100%;
+        height: 100%;
+    }
+    .img-slide .swiper-pagination {
+        text-align: right;
+    }
+    </style>
+</head>
+<body>
+    <nav class="re_nav" id="active-nav">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单1</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单2</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单3</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单4</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单5</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单6</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单7</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单8</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单9</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单10</a></div>
+            <div class="swiper-slide"><a class="active" href="index.html?active_id=<%= item.id %>">菜单11</a></div>
+        </div>
+    </nav>
+    <!-- Swiper -->
+    <div class="img-slide swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href="javascript:void(0)"><img src="img/1.jpg"></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0)"><img src="img/2.jpg"></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0)"><img src="img/3.jpg"></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0)"><img src="img/4.jpg"></a></div>
+            <!--<div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+            <div class="swiper-slide">Slide 10</div>-->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- Swiper JS -->
+    <script src="../dist/js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('#active-nav', {
+        freeMode: true,
+        slidesPerView: 'auto'
+    });
+     var swiper2 = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        //direction: 'vertical'
+        loop: true
+    });
+    </script>
+</body>
+</html>
